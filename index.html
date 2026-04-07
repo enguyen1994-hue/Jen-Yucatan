@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jen's Yucatán Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #fafaf8;
+    --gray-light: #f0eeea;
+    --gray-mid: #d8d5cf;
+    --gray-text: #888580;
+    --teal: #0d9e82;
+    --teal-light: #e0f5ef;
+    --coral: #e8513a;
+    --coral-light: #fceae6;
+    --amber: #f0a500;
+    --amber-light: #fef3dc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1.5px solid var(--black);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .header-left {
+    padding: 2rem 2rem 2rem 0;
+    border-right: 1px solid var(--gray-mid);
+    flex: 1;
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    margin-bottom: 0.5rem;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .header-sub {
+    margin-top: 0.75rem;
+    font-size: 14px;
+    color: var(--gray-text);
+    font-weight: 300;
+    max-width: 420px;
+  }
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0 2rem 2rem;
+    min-width: 140px;
+    gap: 0.4rem;
+  }
+  .header-flag { font-size: 3.2rem; }
+  .header-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-text);
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    padding: 1.5rem 0 0.75rem;
+    border-top: 1px solid var(--gray-mid);
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-mid);
+  }
+
+  /* ── SPOTS GRID ── */
+  .spots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-left: 1px solid var(--gray-mid);
+    margin-bottom: 0;
+  }
+  .spot-card {
+    border-right: 1px solid var(--gray-mid);
+    border-bottom: 1px solid var(--gray-mid);
+    padding: 1.25rem 1rem;
+  }
+  .spot-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--gray-mid);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .spot-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--black);
+    margin-bottom: 0.3rem;
+  }
+  .spot-desc {
+    font-size: 12px;
+    color: var(--gray-text);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ── DO / DON'T ── */
+  .dos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-left: 1px solid var(--gray-mid);
+  }
+  .dos-col {
+    border-right: 1px solid var(--gray-mid);
+    padding: 0 1.25rem 1.25rem;
+  }
+  .dos-col-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.75rem 0;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gray-mid);
+  }
+  .dos-col-label.do { color: var(--teal); }
+  .dos-col-label.dont { color: var(--coral); }
+  .do-item {
+    display: flex;
+    gap: 0.65rem;
+    margin-bottom: 0.9rem;
+    align-items: flex-start;
+  }
+  .do-dot {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+    margin-top: 1px;
+  }
+  .dot-do { background: var(--teal-light); color: var(--teal); }
+  .dot-dont { background: var(--coral-light); color: var(--coral); }
+  .do-body {}
+  .do-main { font-size: 13px; font-weight: 500; color: var(--black); line-height: 1.4; }
+  .do-note { font-size: 11.5px; color: var(--gray-text); font-weight: 300; margin-top: 1px; line-height: 1.45; }
+
+  /* ── FOOD ROW ── */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-left: 1px solid var(--gray-mid);
+  }
+  .food-card {
+    border-right: 1px solid var(--gray-mid);
+    border-bottom: 1px solid var(--gray-mid);
+    padding: 1.1rem 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .food-card::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--teal);
+    margin-bottom: 0.8rem;
+    width: 32px;
+  }
+  .food-name { font-weight: 500; font-size: 14px; margin-bottom: 0.3rem; }
+  .food-desc { font-size: 12px; color: var(--gray-text); line-height: 1.5; font-weight: 300; }
+
+  /* ── TIPS ── */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-left: 1px solid var(--gray-mid);
+  }
+  .tip-item {
+    border-right: 1px solid var(--gray-mid);
+    border-bottom: 1px solid var(--gray-mid);
+    padding: 1rem 1.1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .tip-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .tip-main { font-size: 13px; font-weight: 500; line-height: 1.4; }
+  .tip-note { font-size: 11.5px; color: var(--gray-text); margin-top: 2px; font-weight: 300; line-height: 1.45; }
+
+  /* ── PHRASES ── */
+  .phrases-wrap {
+    border: 1px solid var(--gray-mid);
+    border-radius: 0;
+  }
+  .phrase-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid var(--gray-light);
+    gap: 1rem;
+  }
+  .phrase-row:last-child { border-bottom: none; }
+  .phrase-en { font-size: 12.5px; color: var(--gray-text); font-weight: 300; flex: 1; }
+  .phrase-right { text-align: right; }
+  .phrase-es { font-size: 13.5px; font-weight: 500; color: var(--black); }
+  .phrase-pro { font-size: 11px; color: var(--gray-text); font-style: italic; }
+
+  /* ── ALERT CARDS ── */
+  .alerts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .alert-card {
+    border-radius: 2px;
+    padding: 1rem 1.15rem;
+    border-left: 3px solid;
+  }
+  .alert-card.warning {
+    background: var(--amber-light);
+    border-color: var(--amber);
+  }
+  .alert-card.danger {
+    background: var(--coral-light);
+    border-color: var(--coral);
+  }
+  .alert-title { font-weight: 500; font-size: 13px; margin-bottom: 0.3rem; }
+  .alert-body { font-size: 12px; color: #5a4e3a; font-weight: 300; line-height: 1.5; }
+  .alert-card.danger .alert-body { color: #7a3028; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1.5px solid var(--black);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+  }
+  .footer-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--black);
+  }
+  .footer-sub { font-size: 11px; color: var(--gray-text); font-family: 'DM Sans', sans-serif; font-style: normal; }
+  .footer-flag { font-size: 1.6rem; }
+
+  /* ── FADE IN ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  header, .section-label, .spots-grid, .dos-grid, .food-grid, .tips-grid, .phrases-wrap, .alerts-grid {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header { flex-direction: column; padding: 1.5rem; }
+    .header-left { border-right: none; border-bottom: 1px solid var(--gray-mid); padding: 0 0 1.5rem; }
+    .header-right { padding: 1.5rem 0 0; flex-direction: row; justify-content: flex-start; }
+    .container { padding: 0 1.25rem; }
+    .spots-grid, .food-grid, .tips-grid { grid-template-columns: 1fr 1fr; }
+    .dos-grid { grid-template-columns: 1fr; }
+    .alerts-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="header-eyebrow">First-timer's field guide</div>
+      <h1>Jen's<br><em>Yucatán</em></h1>
+      <p class="header-sub">Everything you need to know before landing in Mexico's most magical peninsula. Read this once, then go live it.</p>
+    </div>
+    <div class="header-right">
+      <div class="header-flag">🇲🇽</div>
+      <div class="header-label">México</div>
+    </div>
+  </header>
+
+  <!-- SPOTS -->
+  <div class="section-label">Must-visit spots</div>
+  <div class="spots-grid">
+    <div class="spot-card">
+      <div class="spot-num">01</div>
+      <div class="spot-name">Tulum Ruins</div>
+      <div class="spot-desc">Clifftop Mayan temples overlooking turquoise water. Go at sunrise — you'll have it almost to yourself.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-num">02</div>
+      <div class="spot-name">Chichén Itzá</div>
+      <div class="spot-desc">One of the 7 Wonders of the World. Morning only — it gets brutally hot and packed by noon.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-num">03</div>
+      <div class="spot-name">Cenotes</div>
+      <div class="spot-desc">Sacred underground sinkholes full of crystal-clear water. Ik Kil and Dos Ojos are unmissable.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-num">04</div>
+      <div class="spot-name">Mérida</div>
+      <div class="spot-desc">Colonial city with world-class food, art, and nightlife. The cultural soul of the Yucatán.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-num">05</div>
+      <div class="spot-name">Isla Holbox</div>
+      <div class="spot-desc">No cars, bioluminescent water, whale sharks in summer. Pure magic. Ferry from Chiquilá.</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-num">06</div>
+      <div class="spot-name">Valladolid</div>
+      <div class="spot-desc">Colorful colonial town with Cenote Zací right in the center. A perfect day trip stop.</div>
+    </div>
+  </div>
+
+  <!-- DO / DON'T -->
+  <div class="section-label">Do this / don't do this</div>
+  <div class="dos-grid">
+    <div class="dos-col">
+      <div class="dos-col-label do">Do this</div>
+      <div class="do-item">
+        <div class="do-dot dot-do">✓</div>
+        <div class="do-body">
+          <div class="do-main">Drink bottled or purified water only</div>
+          <div class="do-note">Tap water will wreck your trip fast — even ice at sketchy spots</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-do">✓</div>
+        <div class="do-body">
+          <div class="do-main">Carry small pesos in cash</div>
+          <div class="do-note">Many markets, cenotes, and taquerias are cash-only</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-do">✓</div>
+        <div class="do-body">
+          <div class="do-main">Use reef-safe sunscreen</div>
+          <div class="do-note">Required at most cenotes — regular sunscreen is banned to protect the ecosystem</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-do">✓</div>
+        <div class="do-body">
+          <div class="do-main">Eat street tacos fearlessly</div>
+          <div class="do-note">Find the stall with the longest line of locals — that's always the right move</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-do">✓</div>
+        <div class="do-body">
+          <div class="do-main">Download offline Google Maps</div>
+          <div class="do-note">Cell signal is spotty in cenote zones and jungle roads</div>
+        </div>
+      </div>
+    </div>
+    <div class="dos-col">
+      <div class="dos-col-label dont">Don't do this</div>
+      <div class="do-item">
+        <div class="do-dot dot-dont">✕</div>
+        <div class="do-body">
+          <div class="do-main">Don't rent a car without budgeting for tolls</div>
+          <div class="do-note">Cuotas (toll roads) add up fast — or just take ADO buses instead</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-dont">✕</div>
+        <div class="do-body">
+          <div class="do-main">Don't flash expensive gear or jewelry</div>
+          <div class="do-note">Petty theft is the main risk — leave valuables locked at the hotel</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-dont">✕</div>
+        <div class="do-body">
+          <div class="do-main">Don't enter cenotes with sunscreen on</div>
+          <div class="do-note">Shower before you swim — they'll make you anyway, but respect the ecosystem</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-dont">✕</div>
+        <div class="do-body">
+          <div class="do-main">Don't skip travel insurance</div>
+          <div class="do-note">Medical care isn't always cheap for tourists here — just get covered</div>
+        </div>
+      </div>
+      <div class="do-item">
+        <div class="do-dot dot-dont">✕</div>
+        <div class="do-body">
+          <div class="do-main">Don't wander alone at night in quiet areas</div>
+          <div class="do-note">Stick to busy, well-lit areas after dark — same rules as anywhere new</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOD -->
+  <div class="section-label">Eat this</div>
+  <div class="food-grid">
+    <div class="food-card">
+      <div class="food-name">Cochinita pibil</div>
+      <div class="food-desc">The dish of Yucatán — slow-roasted pork in achiote paste. Get it in a taco or on a torta. Non-negotiable.</div>
+    </div>
+    <div class="food-card">
+      <div class="food-name">Agua de jamaica</div>
+      <div class="food-desc">Hibiscus flower drink, tart and sweet and cold. Order it with every single meal. You're welcome.</div>
+    </div>
+    <div class="food-card">
+      <div class="food-name">Sopa de lima</div>
+      <div class="food-desc">Tangy chicken soup with lime and crispy tortilla strips. Yucatán's soul in a bowl. Order it in Mérida.</div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="section-label">Practical tips</div>
+  <div class="tips-grid">
+    <div class="tip-item">
+      <div class="tip-icon-wrap">💊</div>
+      <div>
+        <div class="tip-main">Pack Pepto-Bismol and Imodium</div>
+        <div class="tip-note">Even careful eaters can get traveler's stomach. Be prepared, not panicked.</div>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon-wrap">🦟</div>
+      <div>
+        <div class="tip-main">DEET bug spray every evening</div>
+        <div class="tip-note">Mosquitoes carry dengue in the region — this is not optional, Jen.</div>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon-wrap">🌡️</div>
+      <div>
+        <div class="tip-main">It is aggressively, relentlessly hot</div>
+        <div class="tip-note">80–95°F with humidity. Light linen only, refill water constantly, rest at midday.</div>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon-wrap">🚌</div>
+      <div>
+        <div class="tip-main">ADO buses are your best friend</div>
+        <div class="tip-note">Safe, AC, wifi, and affordable. Connects Cancún, Mérida, Tulum, Playa del Carmen.</div>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon-wrap">💳</div>
+      <div>
+        <div class="tip-main">USD is accepted, but pesos get better rates</div>
+        <div class="tip-note">Use a "casa de cambio" exchange booth — airport rates are terrible.</div>
+      </div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon-wrap">📱</div>
+      <div>
+        <div class="tip-main">Get a local SIM or international plan</div>
+        <div class="tip-note">Telcel has the best coverage across the peninsula. Sort this before you land.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHRASES -->
+  <div class="section-label">Spanish survival kit</div>
+  <div class="phrases-wrap">
+    <div class="phrase-row">
+      <span class="phrase-en">Thank you</span>
+      <div class="phrase-right"><div class="phrase-es">Gracias</div><div class="phrase-pro">GRAH-see-as</div></div>
+    </div>
+    <div class="phrase-row">
+      <span class="phrase-en">Where is...?</span>
+      <div class="phrase-right"><div class="phrase-es">¿Dónde está...?</div><div class="phrase-pro">DOHN-day eh-STAH</div></div>
+    </div>
+    <div class="phrase-row">
+      <span class="phrase-en">How much does it cost?</span>
+      <div class="phrase-right"><div class="phrase-es">¿Cuánto cuesta?</div><div class="phrase-pro">KWAHN-toh KWEHS-tah</div></div>
+    </div>
+    <div class="phrase-row">
+      <span class="phrase-en">The check, please</span>
+      <div class="phrase-right"><div class="phrase-es">La cuenta, por favor</div><div class="phrase-pro">La KWEHN-tah por fah-VOR</div></div>
+    </div>
+    <div class="phrase-row">
+      <span class="phrase-en">Is this water safe to drink?</span>
+      <div class="phrase-right"><div class="phrase-es">¿Es potable esta agua?</div><div class="phrase-pro">Es poh-TAH-bleh EHS-tah AH-gwah</div></div>
+    </div>
+    <div class="phrase-row">
+      <span class="phrase-en">I don't eat meat</span>
+      <div class="phrase-right"><div class="phrase-es">No como carne</div><div class="phrase-pro">No KOH-mo KAR-neh</div></div>
+    </div>
+  </div>
+
+  <!-- ALERTS -->
+  <div class="section-label">Before you go</div>
+  <div class="alerts-grid">
+    <div class="alert-card warning">
+      <div class="alert-title">Check current travel advisories</div>
+      <div class="alert-body">The Yucatán is generally safe for tourists, but review state-level advisories before any road trips. Stick to main tourist corridors and you'll be absolutely fine.</div>
+    </div>
+    <div class="alert-card danger">
+      <div class="alert-title">Know your nearest clinic</div>
+      <div class="alert-body">Screenshot the nearest hospital in each city you visit. Private hospitals are faster but costlier. IMSS public hospitals exist too. Having this info is just smart.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-text">"Be bold, be curious, be kind — and eat the tacos."</div>
+    <div class="footer-sub">Made with love · Jen's first trip to México</div>
+  </div>
+  <div class="footer-flag">🌺</div>
+</footer>
+
+</body>
+</html>
